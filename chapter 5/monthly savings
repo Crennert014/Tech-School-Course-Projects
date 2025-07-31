@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class App{
+public static void main(String[] args){
+    final var D = ((1 + 0.00417));
+    Scanner input = new Scanner(System.in);
+    
+    System.out.println( "Enter monthly deposit amount:   ");
+    double deposit = input.nextDouble();
+    int d = 0;
+    if (d <= 6)
+    d++;
+    double month1 = deposit * D;
+    double month2 = (deposit + month1) * D;
+    double month3 = (deposit + month2) * D;
+    double month4 = (deposit + month3) * D;
+    double month5 = (deposit + month4) * D;
+    Double month6 = (deposit + month5) * D;
+    System.out.println("Total in savings  " + month6);
+    
+     }
+}
