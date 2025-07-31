@@ -1,0 +1,24 @@
+public class ticTacToe {
+
+
+public static void main(String[] args) {
+    int[][] table = new int [3][3];
+    int total = 0;
+        System.out.println("Enter row (0, 1, or 2)for player x: ");
+        System.out.println(" Enter column (0, 1, or 2) for player x: ");
+            Scanner input = new Scanner(System.in);
+    for ( int row = 0; row < table.length; row++)
+        for (int column = 0; column < table[row].length; column++){
+            table[row][column] = input.nextInt();
+            total += table[row][column];
+        System.out.println(table[row][column] " ");}
+        System.out.println();
+
+        System.out.println("Enter row (0, 1, or 2)for player o: ");
+        System.out.println(" Enter column (0, 1, or 2) for player o: ");
+    for ( int row = 0; row < table.length; row++)
+        for (int column = 0; column < table[row].length; column++){
+            table[row][column] = input.nextInt();}
+
+}
+}
