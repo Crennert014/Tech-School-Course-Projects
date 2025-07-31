@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class App {
+
+public static void main(String[] args){
+
+Scanner input = new Scanner(System.in);
+System.out.println("Enter three numbers: ");
+int digit = input.nextInt();
+int reversedigit = (digit * 10 + n % 10);
+digit = (digit / 10);
+if (digit == reverseD)
+System.out.println(digit + " is a palindrome number");
+else {
+System.out.println(digit + " is not a panlindrome number");
+}
+}
+}
