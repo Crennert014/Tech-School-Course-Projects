@@ -1,21 +1,21 @@
-import java.util.Scanner;
+    import java.util.Scanner;
 
-public class cointoss {
-
-public static void main(String[] args){
-
-Scanner input = new Scanner(System.in);
-
-System.out.println(" Guess heads or tails; 1 = heads, 0 = tails:  ");
-
-double randomNumber = input.nextDouble();
-
-int randomNumber = (int)(Math.random() * 2);
-
-System.out.println("Answer is  " + randomNumber);
-
-}
-
-}
-
- 
+    public class cointoss {
+    
+    public static void main(String[] args){
+    
+    Scanner input = new Scanner(System.in);
+    
+    System.out.println(" The coin is in the air, guess heads or tails; 1 = heads, 0 = tails:  ");
+    
+    
+    int x = input.nextInt();
+    
+    int randomNumber = (int)(Math.random() * 2);
+    
+    System.out.println("Answer is  " + randomNumber);
+    
+    }
+    
+    }
+    
