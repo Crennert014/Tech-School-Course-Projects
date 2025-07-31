@@ -1,0 +1,15 @@
+   public static void main(String[] args) {
+       final double CP = 312032486;
+       final double PP = 325932699;
+        
+       Scanner input = new Scanner ( System.in);
+
+       System.out.println(" Enter number of years for population growth");
+       double years = input.nextDouble();
+       years = ((PP - CP) / years);
+
+       System.out.println("population growth per year   "+ years);
+       
+       
+
+    }
