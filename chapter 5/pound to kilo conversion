@@ -1,0 +1,22 @@
+
+public class poundstokilo {
+
+    public static void main(String[] args) {
+       final double PPK = 2.2;
+        int p1 = 1;
+        int p3 = 3;
+        int p197 = 197;
+        int p199 = 199;
+        
+        double pound1 = p1 * PPK;
+        double pound3 = p3 * (int)PPK;
+        double pound197 = p197 * (int)PPK;
+        double pound199 = p199 * PPK; 
+      
+        System.out.println(p1 + " kilograms in pounds is " + pound1 );
+        System.out.println(p3 + " kilograms in pounds is " + pound3 );
+        System.out.println(p197 + " kilograms in pounds is " + pound197 );
+        System.out.println(p199 + "  kilograms in pounds is " + pound199 );
+        
+    }
+}
