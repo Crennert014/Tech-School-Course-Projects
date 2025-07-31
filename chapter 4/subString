@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class substring {
+
+
+    public static void main(String[] args){
+
+        Scanner input = new Scanner(System.in);
+        System.out.println(" Please enter two insect seperated my a space: ");
+        String insect1 = input.next();
+        String insect2 = input.next();
+       
+       
+
+        if (insect1.contains(insect2))
+        System.out.print(insect2 + " is a sustring?");
+       
+        else
+        System.out.print(insect2 + " not a substring");
+    }
+
+
+}
+
