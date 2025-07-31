@@ -1,0 +1,44 @@
+import java.util.Scanner;
+  public class science {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Please enter birth year:  ");
+        int year = input.nextInt();
+
+        System.out.println("Please enter a month of the year, beginning with feburary (1-12):  ");
+        int month = input.nextInt();
+
+        System.out.println("Please enter day month:  ");
+        int day = input.nextInt();
+
+        if (month == 1 || month == 2) {
+            month += 12;
+    }
+    
+    int q = day;
+    int m = month;
+    int j = year / 100;
+    int k = year % 100;
+    int h = ((q + 26 * (m + 1) / 10 + (k) + (k/4) + (j/4) + (5 * j)) % 7);
+    
+    if  (h == 0 ){
+        System.out.println("The day is Saturday");}
+
+        else if ( h == 1 )  {
+            System.out.println("The day is Sunday");}
+            else if ( h == 2) {
+                System.out.println("The day is Monday");}
+                else if ( h == 3) {
+                    System.out.println("The day is Tuesday");}
+                    else if ( h == 4) {
+                        System.out.println("The day is Wednesday");}
+                        else if ( h == 5) {
+                            System.out.println("The day is Thursday");}
+                            else if ( h == 6) {
+                                System.out.println("The day is Friday!!!!");}
+    
+
+        System.out.println(h);
+}
+}
