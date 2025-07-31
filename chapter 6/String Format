@@ -1,0 +1,39 @@
+
+
+import java.util.Scanner;
+public class StringFormat {
+
+
+public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter integer: ");
+        int number = input.nextInt();
+        
+        System.out.print("Enter width: ");
+        int width = input.nextInt();
+        
+        String formattedNumber = format(number, width);
+        System.out.println("Formatted number is: " + formattedNumber);
+        
+        input.close();}
+
+        public static String format(int number, int width) {
+        String num = Integer.toString(number);
+        int length = num.length();
+        
+        if (length >= width) {
+            return num;
+        }
+        
+        StringBuilder paddedNum = new StringBuilder();
+        for (int i = 0; i < width - length; i++) {
+            paddedNum.append("0");
+        }
+        paddedNum.append(num);
+        
+        return paddedNum.toString();
+    }
+}
+
+    
