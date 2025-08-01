@@ -1,24 +1,90 @@
-public class ticTacToe {
+import java.util.Scanner;
+public class TicTacToe {
+
+    public static void main(String[] args){
+       char[][] board = new char[3][3];
+        int total = 0;
+        for (char i = 0; i < 3; i++)
+         for (char j = 0; j < 3; j++)
+            board[i][j] = ' ';
+
+                Scanner input = new Scanner(System.in);
+                char currentPlayer = 'X';
+                boolean gameEnded = false;
+                    while (!gameEnded) {
+                        printBoard(board);
+                        char row, column;
+                       
+
+                    while (true) {
+                        System.out.print("Player " + currentPlayer + "enter your move (row [0-2] and column [0-2]): ");
+                        row = (char) input.nextInt();
+                        column = (char) input.nextInt();
+                        board[row][column] = currentPlayer;
+                        
+                        if (row < 0 || row > 2 || column < 0 || column > 2) {
+                            System.out.println("Invalid. Try again.");
+                        } else if (board[row][column] != ' ') {
+                            System.out.println("Spot already taken. Try again.");
+                        } else {
+                            break;
+                    }
+                
+               
+                if (hasWon(board, currentPlayer)) {
+                    printBoard(board);
+                    System.out.println("Player " + currentPlayer + " wins!");
+                    gameEnded = true;}
+                    
+                    else if (isBoardFull(board)) {
+                        printBoard(board);
+                        System.out.println("The game is a tie!");
+                        gameEnded = true;
+                    } else {
+                    currentPlayer = ( currentPlayer == 'X') ? 'O' : 'X';
+                    }
+                }
+            }
+                
+            }
+            public static void printBoard(char[][] board ){
+                System.out.println("Board:");
+                for ( char i = 0; i < 3; i++) {
+                    for (char j = 0; j < 3; j++) {
+                        System.out.print(board[i][j]);
+                        if (j < 2) System.out.println("-"+board[0][0]+"-|--|--");
+                        System.out.println();}
+                        if (i < 2) System.out.println("--|--|--");
+                    }
+
+            }
+                
+            public static boolean hasWon(char[][] board, char player) {
+                for (int i = 0; i < 3; i++)
+                    if((board[i][0] == player && board[i][1] == player && board[i][2] == player) ||
+                        (board[0][i] == player && board[1][i] == player && board[2][i] == player))
+                        return true;
+
+                       { return (board[0][0] == player && board[1][1] == player && board[2][2] == player) ||
+                               (board[0][2] == player && board[1][1] == player && board[2][0] == player);
+            }
+        }          
+            public static boolean isBoardFull(char[][] board) {
+                for (int i = 0; i < 3; i++)
+                    for ( int j = 0; j < 3; j++)
+                        if (board[i][j] == ' ')
+                            
+                return false;
+				return false;
+            }
+        }
+            
+        
+
+    
 
 
-public static void main(String[] args) {
-    int[][] table = new int [3][3];
-    int total = 0;
-        System.out.println("Enter row (0, 1, or 2)for player x: ");
-        System.out.println(" Enter column (0, 1, or 2) for player x: ");
-            Scanner input = new Scanner(System.in);
-    for ( int row = 0; row < table.length; row++)
-        for (int column = 0; column < table[row].length; column++){
-            table[row][column] = input.nextInt();
-            total += table[row][column];
-        System.out.println(table[row][column] " ");}
-        System.out.println();
-
-        System.out.println("Enter row (0, 1, or 2)for player o: ");
-        System.out.println(" Enter column (0, 1, or 2) for player o: ");
-    for ( int row = 0; row < table.length; row++)
-        for (int column = 0; column < table[row].length; column++){
-            table[row][column] = input.nextInt();}
-
-}
-}
+    
+                
+               
+              
