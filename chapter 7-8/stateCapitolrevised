@@ -1,0 +1,49 @@
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+
+public class StatesCapitol {
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the States and Capitals game!");
+        String[][] statesCapitols = {
+            {"Alabama", "Montgomery"}, {"Alaska", "Juneau"}, {"Arizona", "Phoenix"},
+            {"Arkansas", "Little Rock"}, {"California", "Sacramento"}, {"Colorado", "Denver"},
+            {"Connecticut", "Hartford"}, {"Delaware", "Dover"}, {"Florida", "Tallahassee"},
+            {"Georgia", "Atlanta"}, {"Hawaii", "Honolulu"}
+        };
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to play? (yes/no)");
+        String response = scanner.nextLine().trim().toLowerCase();
+
+        if (!response.equals("yes")) {
+            System.out.println("Okay, maybe next time!");
+        } else {
+            playGame(statesCapitols, scanner);
+        }
+
+        scanner.close();
+    }
+
+    public static void playGame(String[][] statesCapitols, Scanner scanner) {
+        int correctAnswers = 0;
+        List<String[]> questions = new ArrayList<>();
+        Collections.addAll(questions, statesCapitols);
+        Collections.shuffle(questions); // Randomize questions
+
+        for (String[] stateCapital : questions) {
+            System.out.println("What is the capital of " + stateCapital[0] + "?");
+            String answer = scanner.nextLine().trim();
+            if (answer.equalsIgnoreCase(stateCapital[1])) {
+                System.out.println("Correct!");
+                correctAnswers++;
+            } else {
+                System.out.println("Incorrect. The capital of " + stateCapital[0] + " is " + stateCapital[1] + ".");
+            }
+        }
+
+        System.out.println("Thank you for playing! You answered " + correctAnswers + " questions correctly.");
+    }
+}
