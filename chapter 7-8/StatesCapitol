@@ -1,0 +1,129 @@
+import java.util.Scanner;
+public class StatesCapitol {
+
+    public static void main(String[] args) {
+       int correctAnswer = 0;
+        System.out.println("Welcome to the States and Capitals game!");
+        String[][] statesCapitols = {
+            {"Alabama", "Montgomery"},
+            {"Alaska", "Juneau"},
+            {"Arizona", "Phoenix"},
+            {"Arkansas", "Little Rock"},
+            {"California", "Sacramento"},
+            {"Colorado", "Denver"},
+            {"Connecticut", "Hartford"},
+            {"Delaware", "Dover"},
+            {"Florida", "Tallahassee"},
+            {"Georgia", "Atlanta"},
+            {"Hawaii", "Honolulu"},
+            
+        };
+        System.out.println("Lets play a game to learn the capitals of the states in the USA!");
+        System.out.println("Would you like to play? (yes/no)");
+        System.out.println("Enter quit to exit the game at any time.");
+        Scanner scanner = new Scanner(System.in);
+        String response = scanner.nextLine().trim().toLowerCase();
+        if (!response.equals("yes")) {
+            System.out.println("Okay, maybe next time!");
+            return;
+        }
+        public static void gameQuestions(String[][] statesCapitols, int correctAnswer) {
+        System.out.println("Great! Let's get started.");
+        System.out.println("What are the capitals of the following states?");
+        System.out.println("What is the capital of Alabama?");
+        Scanner scanner;
+        String answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[0][1]))
+        correctAnswer++;
+            System.out.println("Correct! The capital of Alabama is Montgomery.");
+         else {
+            System.out.println("Incorrect. The capital of Alabama is Montgomery.");
+        }
+        System.out.println("What is the capital of Alaska?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[1][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Alaska is Juneau.");
+        } else {
+            System.out.println("Incorrect. The capital of Alaska is Juneau.");
+        }
+        System.out.println("What is the capital of Arizona?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[2][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Arizona is Phoenix.");
+        } else {            
+            System.out.println("Incorrect. The capital of Arizona is Phoenix.");
+        }
+        System.out.println("What is the capital of Arkansas?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[3][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Arkansas is Little Rock.");
+        } else {
+            System.out.println("Incorrect. The capital of Arkansas is Little Rock.");
+        }
+        System.out.println("What is the capital of California?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[4][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of California is Sacramento.");
+        } else {
+            System.out.println("Incorrect. The capital of California is Sacramento.");
+        }
+        System.out.println("What is the capital of Colorado?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[5][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Colorado is Denver.");
+        } else {
+            System.out.println("Incorrect. The capital of Colorado is Denver.");
+        }
+        System.out.println("What is the capital of Connecticut?");          
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[6][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Connecticut is Hartford.");
+        } else {
+            System.out.println("Incorrect. The capital of Connecticut is Hartford.");
+        }
+        System.out.println("What is the capital of Delaware?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[7][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Delaware is Dover.");
+        } else {
+            System.out.println("Incorrect. The capital of Delaware is Dover.");
+        }
+        System.out.println("What is the capital of Florida?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[8][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Florida is Tallahassee.");
+        } else {
+            System.out.println("Incorrect. The capital of Florida is Tallahassee.");
+        }
+        System.out.println("What is the capital of Georgia?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[9][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Georgia is Atlanta.");
+        } else {
+            System.out.println("Incorrect. The capital of Georgia is Atlanta.");
+        }
+        System.out.println("What is the capital of Hawaii?");
+        answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase(statesCapitols[10][1])) {
+            correctAnswer++;
+            System.out.println("Correct! The capital of Hawaii is Honolulu.");
+        } else {
+            System.out.println("Incorrect. The capital of Hawaii is Honolulu.");
+        }
+        System.out.println("Thank you for playing! You answered " + correctAnswer + " questions correctly.");
+        System.out.println(:"Here are the capitals of the states you learned:");
+
+        for (String[] state : statesCapitols) {
+            System.out.println("The capital of " + state[0] + " is " + state[1]);}
+        
+    }
+}
