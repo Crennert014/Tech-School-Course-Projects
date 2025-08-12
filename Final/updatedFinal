@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class finalProject {
+    public static void main(String[] args) {
+        // Egg colors: 0 - white, 1 - brown, 2 - green, 3 - peacock
+        String[] eggTypes = {"White", "Brown", "Green", "Peacock"};
+        int[] eggs = new int[4]; // Stores count for each color
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to your Yearly Egg counter");
+        System.out.print("Please enter today's date to begin: ");
+        String date = input.nextLine();
+
+        int totalEggs = 0;
+        for (int i = 0; i < eggs.length; i++) {
+            System.out.print("Enter amount of " + eggTypes[i] + " eggs collected today: ");
+            eggs[i] = input.nextInt();
+            totalEggs += eggs[i];
+        }
+
+        displayEggs(date, totalEggs, eggs, eggTypes);
+        input.close();
+    }
+
+    // Display count
+    public static void displayEggs(String date, int totalEggs, int[] eggs, String[] eggTypes) {
+        System.out.println("\nEggs collected on " + date + ":");
+        System.out.println("Total eggs: " + totalEggs);
+        for (int i = 0; i < eggs.length; i++) {
+            System.out.println(eggTypes[i] + ": " + eggs[i]);
+        }
+    }
+}
