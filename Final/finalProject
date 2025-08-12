@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class finalProject {
+
+    public static void main(String[] args) {
+        // declaring items
+        int[][] eggs = new int[4][4]; 
+            int white = eggs[0];
+            int brown = eggs[1];
+            int green = eggs[2];
+            int peacock = eggs[3];
+        int eggcount = 0;
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to your Yearly Egg counter");
+        System.out.println(" Please enter todays date to begin: ");
+        int date = input.nextInt();
+
+            System.out.println("Please enter total amount of eggs collected: ");
+            eggcount = input.nextInt();
+            for (int x = 0; x < 1000; x++);
+                 eggcount++;
+System.out.println(" Enter amount of " + eggcount + " eggs");
+            System.out.println("Enter the color is the egg(enter 0 for white, 1 for brown, 2 for green, 3 peacock egg)? ");
+        int c = input.nextInt();{
+            
+            
+            for (c = 0; c < eggs.length; white++);
+            for (c = 1; c < eggs.length; brown++);
+            for (c = 2; c < eggs.length; green++);
+            for (c = 3; c < eggs.length; peacock++);
+            System.out.println("Enter the amount of " + c + "eggs collected today: ");
+            int[a] eggs = input.nextInt();}
+    
+
+                System.out.println("The amount of eggs are collected: " + eggs[c][a]);
+                return displayEggs;}
+                    
+                        // display count
+                 public static void displayEggs(int eggcount, int[][] eggs, int x) {
+                    
+        for (int c = 0; c < 1000; c++) {
+            for (int a = 0; a < 1000; a++) {
+                System.out.print("Here are the total eggs collected: " + eggcount); 
+                System.out.println("Here are the types of eggs collected " + eggs[c][a]);
+            }
+            System.out.println(); 
+        }
+        
+    
+
+    }
+}
