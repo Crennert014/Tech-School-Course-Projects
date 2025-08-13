@@ -1,0 +1,106 @@
+import java.util.Scanner;
+import java.io.*;
+
+public class EggCounterMatrixWithPersistence {
+    public static void main(String[] args) {
+        String[] eggTypes = {"white", "brown", "green", "peacock"};
+        String filename = "eggdata.csv";
+        int maxDays = 1000; // arbitrary large limit
+
+        // Load existing data
+        String[] dates = new String[maxDays];
+        int[][] eggMatrix = new int[maxDays][eggTypes.length];
+        int existingDays = loadData(filename, eggTypes.length, dates, eggMatrix);
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("How many new days would you like to record? ");
+        int newDays = input.nextInt();
+        input.nextLine(); // consume newline
+
+        // Collect new data and append to arrays
+        collectEggData(input, eggTypes, dates, eggMatrix, existingDays, newDays);
+
+        // Show all data (old + new)
+        displayEggMatrix(eggTypes, dates, eggMatrix, existingDays + newDays);
+
+        // Save all data back to file
+        saveData(filename, eggTypes, dates, eggMatrix, existingDays + newDays);
+
+        input.close();
+    }
+
+    // Load data from file
+    public static int loadData(String filename, int eggTypeCount, String[] dates, int[][] eggMatrix) {
+        int dayCount = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String header = br.readLine(); // skip header
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= eggTypeCount + 1) {
+                    dates[dayCount] = parts[0];
+                    for (int j = 0; j < eggTypeCount; j++) {
+                        eggMatrix[dayCount][j] = Integer.parseInt(parts[j + 1]);
+                    }
+                    dayCount++;
+                }
+            }
+        } catch (IOException e) {
+            // File may not exist yet -- that's fine
+        }
+        return dayCount;
+    }
+
+    // Save data to file
+    public static void saveData(String filename, String[] eggTypes, String[] dates, int[][] eggMatrix, int days) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
+            // Header
+            pw.print("Date");
+            for (String eggType : eggTypes) {
+                pw.print("," + eggType);
+            }
+            pw.println();
+            // Data rows
+            for (int i = 0; i < days; i++) {
+                pw.print(dates[i]);
+                for (int j = 0; j < eggTypes.length; j++) {
+                    pw.print("," + eggMatrix[i][j]);
+                }
+                pw.println();
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving data: " + e.getMessage());
+        }
+    }
+
+    // Collect new egg data
+    public static void collectEggData(Scanner input, String[] eggTypes, String[] dates, int[][] eggMatrix, int offset, int newDays) {
+        for (int i = 0; i < newDays; i++) {
+            System.out.print("Enter date for new day " + (i + 1) + " (e.g., 2025-08-13): ");
+            dates[offset + i] = input.nextLine();
+            for (int j = 0; j < eggTypes.length; j++) {
+                System.out.print("Enter number of " + eggTypes[j] + " eggs collected on " + dates[offset + i] + ": ");
+                eggMatrix[offset + i][j] = input.nextInt();
+            }
+            input.nextLine(); // consume newline
+        }
+    }
+
+    // Display the matrix of all eggs collected
+    public static void displayEggMatrix(String[] eggTypes, String[] dates, int[][] eggMatrix, int days) {
+        System.out.printf("%-12s", "Date");
+        for (String eggType : eggTypes) {
+            System.out.printf("%-12s", eggType);
+        }
+        System.out.printf("%-12s%n", "Total");
+        for (int i = 0; i < days; i++) {
+            System.out.printf("%-12s", dates[i]);
+            int dayTotal = 0;
+            for (int j = 0; j < eggTypes.length; j++) {
+                System.out.printf("%-12d", eggMatrix[i][j]);
+                dayTotal += eggMatrix[i][j];
+            }
+            System.out.printf("%-12d%n", dayTotal);
+        }
+    }
+}
