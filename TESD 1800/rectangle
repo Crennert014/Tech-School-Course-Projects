@@ -1,0 +1,28 @@
+public class rectangle{
+    private double width;
+    private double length;
+    private double rect1;
+    private double rect2;
+    rectangle();
+        this.rect1 = width = 4; length = 40;
+        this.rect2 = width = 3.5; length = 35.9;
+        
+        public static void rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;}
+
+            public double getArea()
+            return width * length;
+
+                public double getParimeter()
+                return length * 2 width * 2;
+
+                public static void displayRectangle()
+                System.out.println("The area of the rectangle is " + getArea);
+                System.out.println("The parimeter of the rectangle is " + getparimeter);
+
+
+
+
+
+}
