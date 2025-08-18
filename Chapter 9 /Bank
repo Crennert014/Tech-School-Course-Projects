@@ -1,0 +1,41 @@
+import java.util.Date;
+public class Account{
+
+    public static void main(String[] args) {
+        int ID = 1122;
+        double balance = 20000;
+        double annualInterestRate = 4.5;
+        Date input = new Date();
+        System.out.println("Enter todays date: ");
+        int Date = (int) ((Object) input);
+        account( ID, balance, annualInterestRate);
+        
+    }
+    public static void account(int ID, double balance, double annualInterestRate) {
+        System.out.println("Welcome member number: " + ID);
+        System.out.println("Your account balance is: " + balance);
+    }
+    public static void getMonthlyInterestRate(double annualInterestRate) {
+        annualInterestRate = 4.5 / 100;
+        double monthlyInterestRate = annualInterestRate / 12;
+        System.out.println("This is the monthly interest: " + monthlyInterestRate);}
+
+
+    public static void getMonthlyInterest(double annualInterestRate, double balance, double monthlyInterestRate) {
+        
+        
+        double monthlyInterest = balance * monthlyInterestRate;
+        System.out.println("Monthly interest is: " + monthlyInterest);
+    }
+    public static void withdraw( double balance) {
+        double withdraw = balance - 2500;
+        System.out.println("After your withdraw amount your account balance is: " + withdraw);
+    }
+    public static void deposit(double balance) {
+        double deposit = balance + 3000;
+        System.out.println("After the your deposit your total account balance is: " + deposit);
+    }
+}
+
+    
+
