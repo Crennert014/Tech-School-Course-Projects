@@ -1,0 +1,21 @@
+package chapter 10;
+
+public class myIntegerUML 
+    Class myIntegerUML
+- int data field = value
++ myInterget(): int
++ getter()
++isEven()
++isOdd()
++isPrime()
++isEven(int)
++isOdd(int)
++isPrime(int)
++isEven(Myinteger): static
++isOdd(Myinteger): static 
++isPrime(Myinteger): static 
++equals(Myinteger): return true
++equals(int): returns true
++parseInt(char[]): array to int value
++parseInt(string): coverts string to int value
+
