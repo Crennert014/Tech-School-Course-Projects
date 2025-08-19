@@ -1,0 +1,14 @@
+public class accountPlan {
+    class Account
+    - int id
+    - double balance = 0
+    - double annualInterestRate = 0
+    - double dataCreated
+    - loanDate: java.util.Date
+    
+    + account(double balance, double annualInterestRate, double dataCreated) : no args
+    + getMonthInterestRate() : double
+    + getMonthlyInterest() : double
+    + withDraw() : int
+    + deposit() : double
+}
