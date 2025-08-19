@@ -1,41 +1,56 @@
-import java.util.Date;
-public class Account{
+package chapter9;
 
+import java.util.Date;
+public class bank {
+
+    private static Object date;
     public static void main(String[] args) {
+        
+        
+        Object dateCreated;
+        
         int ID = 1122;
-        double balance = 20000;
-        double annualInterestRate = 4.5;
+        double balance = 20000.00;
+        double annualInterestRate = 0.45;
+        double monthlyInterestRate = 0;
+        double monthlyInterest = 0;
+        double newBalance = 0;
+        double deposit = 0;
         Date input = new Date();
-        System.out.println("Enter todays date: ");
-        int Date = (int) ((Object) input);
         account( ID, balance, annualInterestRate);
+        getMonthlyInterestRate(annualInterestRate);
+        getMonthlyInterest( annualInterestRate, balance, monthlyInterestRate, monthlyInterest);
+        withdraw(balance);
+        deposit(newBalance, deposit);
         
     }
     public static void account(int ID, double balance, double annualInterestRate) {
-        System.out.println("Welcome member number: " + ID);
-        System.out.println("Your account balance is: " + balance);
+        balance = 2000000 / Math.pow(10, balance);
+        System.out.println("Welcome member number: " + ID + " Date account created: 08/19/2025");
     }
     public static void getMonthlyInterestRate(double annualInterestRate) {
-        annualInterestRate = 4.5 / 100;
+        annualInterestRate = 0.45 * 100;
         double monthlyInterestRate = annualInterestRate / 12;
-        System.out.println("This is the monthly interest: " + monthlyInterestRate);}
-
-
-    public static void getMonthlyInterest(double annualInterestRate, double balance, double monthlyInterestRate) {
         
-        
-        double monthlyInterest = balance * monthlyInterestRate;
+    }
+
+    public static void getMonthlyInterest(double annualInterestRate, double balance, double monthlyInterestRate,double monthlyInterest) {
+        balance = 20000;
+        annualInterestRate = 0.45 / 100;
+        monthlyInterestRate = annualInterestRate / 12;
+        monthlyInterest = balance * monthlyInterestRate;
         System.out.println("Monthly interest is: " + monthlyInterest);
     }
     public static void withdraw( double balance) {
+        balance = 20000;
         double withdraw = balance - 2500;
-        System.out.println("After your withdraw amount your account balance is: " + withdraw);
+        
     }
-    public static void deposit(double balance) {
-        double deposit = balance + 3000;
-        System.out.println("After the your deposit your total account balance is: " + deposit);
-    }
+    public static void deposit(double newBalance, double deposit) {
+        newBalance = 17500.00;
+        deposit = newBalance + 3000;
+        System.out.printf("After your deposit your total account balance is: %.2f\n", deposit);    }
 }
 
     
-
+    
