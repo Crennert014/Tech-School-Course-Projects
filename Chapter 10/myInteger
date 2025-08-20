@@ -1,0 +1,86 @@
+public class myInteger {
+
+    private int value;
+
+    
+    public myInteger(int value) {
+        this.value = value;
+    }
+
+    
+    public int getValue() {
+        return value;
+    }
+
+    
+    public boolean isEven() {
+        return isEven(value);
+    }
+
+    
+    public boolean isOdd() {
+        return isOdd(value);
+    }
+
+    
+    public boolean isPrime() {
+        return isPrime(value);
+    }
+
+     
+    public static boolean isEven(int n) {
+        return n % 2 == 0;
+    }
+
+     
+    public static boolean isOdd(int n) {
+        return n % 2 != 0;
+    }
+
+     
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+     
+    public static boolean isEven(myInteger myInt) {
+        return isEven(myInt.getValue());
+    }
+
+     
+    public static boolean isOdd(myInteger myInt) {
+        return isOdd(myInt.getValue());
+    }
+
+    
+    public static boolean isPrime(myInteger myInt) {
+        return isPrime(myInt.getValue());
+    }
+
+     
+    public boolean equals(int n) {
+        return this.value == n;
+    }
+
+     
+    public boolean equals(myInteger myInt) {
+        if (myInt == null) return false;
+        return this.value == myInt.getValue();
+    }
+
+  
+    public static int parseInt(char[] chars) {
+        return Integer.parseInt(new String(chars));
+    }
+
+   
+    public static int parseInt(String s) {
+        return Integer.parseInt(s);
+    }
+}
