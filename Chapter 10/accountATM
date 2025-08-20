@@ -1,0 +1,58 @@
+import java.util.Date;
+import java.util.Scanner;
+public class account {
+
+    private static Object date;
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        Object dateCreated;
+        
+        int[] ID = {0122,1122,2122,3122,4122,5122,6122,7122,8122,9122};
+        final double balance = 100.00;
+        System.out.println("Please enter account ID number: ");
+        int accountID = input.nextInt();
+            if (accountID != ID);
+            System.out.println("Im sorry, the account ID number is incorrect. Please reenter account ID number: ");
+                if ( accountID = ID){
+                return ID; }
+            account( ID, balance);
+            withdraw(balance);
+            deposit(newBalance, deposit);
+            exitPrgram();
+                }
+        public static void account(int ID, double balance) {
+        balance = 100.00 / Math.pow(10, balance);
+        System.out.println("Welcome member number: " + ID);
+        System.out.println("Please enter a 1 to view balance, enter a 2 to withdraw, enter a 3 to deposit money, enter a 4 to exit: ");}
+        if ( input.nextInt() != (1,2,3,4)){
+            System.out.println("Im sorry, Please enter a 1 to view balance, enter a 2 to withdraw, enter a 3 to deposit money, enter a 4 to exit: ");
+        if ( input.nextInt() = 1)
+            return balance;
+                if (input.nextInt() = 2)
+                return withdraw;
+                    if (input.nextInt() = 3)
+                    return deposit;
+                        if (input.nextInt() = 4)
+                        return exitProgram;}
+        
+    public static void withdraw( double balance, double withdraw, double newBalance) {
+        System.out.println("You have " + balance + " to withdraw. How much would you like to withdraw?");
+        withdraw = input.nextDouble();
+        newBalance += balance - withdraw;
+            
+            if (withdraw >= balance){
+            System.out.println(" The amount entered exceeds your account balance. Please enter an amount equal or less than " + balance);}
+                if (withdraw <= balance){
+                balance = 100.00 / Math.pow(10, balance);
+                System.out.println("After your " + withdraw + " amount. Your new balance is: %.2f\n " + newBalance);}  
+    }
+    public static void deposit(double balance, double newBalance, double deposit) {
+        System.out.println("Please enter the amount to be deposited: ");
+
+        deposit = input.nextDouble();
+        newBlance += deposit + balance;
+        System.out.printf("After your deposit your total account balance is: %.2f\n", newBalance);}
+    }
+    
