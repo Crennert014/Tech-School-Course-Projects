@@ -64,7 +64,7 @@ package Chapter10;
                 System.out.println("Withdrawal amount must be between 20 and " + balance);
             } else {
                 balance -= amount;
-                System.out.printf("After your withdraw, you know have: %.24\n ", balance);
+                System.out.printf("After your withdraw, you know have: %.2f\n ", balance);
             }
         }
     
