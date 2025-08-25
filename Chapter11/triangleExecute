@@ -1,0 +1,15 @@
+package Chapter11;
+
+public class triangleExecute {
+
+    private static Chapter11.triangle triangle;
+
+	public static void main(String[] args) {
+       Chapter11.triangle triangle = new triangle(1, 1, 1, "green", false);
+       System.out.println("The Triangle " + triangle.toString());
+       System.out.println("The color is " + triangle.getColor());
+       System.out.println("The area is " + triangle.getArea(1));
+       
+    }
+
+}
