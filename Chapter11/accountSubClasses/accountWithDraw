@@ -1,0 +1,20 @@
+package Chapter11.Chapter11Sub;
+
+import java.util.Scanner;
+
+public class accountWithDraw extends accountAnnualInterestRate {
+    private static double accountBalance = 100000.00;
+
+public static void withdraw(Scanner input) {
+            System.out.print("How much would you like to withdraw? ");
+            double amount = input.nextDouble();
+            if (amount > accountBalance) {
+                System.out.println("The amount exceeds your account balance. Please enter an amount equal to or less than $" + accountBalance);
+            } else if (amount <= 0) {
+                System.out.println("Withdrawal amount must be greater than 0.");
+            } else {
+                accountBalance -= amount;
+                System.out.printf("After your withdrawal, your new balance is: $%.2f\n", accountBalance);
+            }
+        }
+}
