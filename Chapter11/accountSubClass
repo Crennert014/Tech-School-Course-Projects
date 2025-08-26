@@ -1,0 +1,20 @@
+public class accountSubClassUML {
+    class Account
+    - int id
+    - double savings = 20000
+    - double accountBalance = 100000
+   
+    - double loan? add maybe
+    - double overdraft = 25
+    - double annualInterestRate = 4.5
+    - double dataCreated
+    - loanDate: java.util.Date
+    
+    + account(double id, double annualInterestRate, double dataCreated) : no args
+    + getMonthInterestRate() 
+    + getMonthlyInterest() 
+    + withDraw(double) : void
+    + deposit(double) : void
+    + Savings(sub/double savings) : void
+    + OverDraft(sub/double) :   
+    + loanApp(sub) : double deny all loan = return false loan loop?
