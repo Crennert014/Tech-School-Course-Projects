@@ -1,0 +1,12 @@
+package Chapter11.Chapter11Sub;
+
+public class accountAnnualInterestRate {
+// Annual interest rate
+public static void getAnnualInterestRate(double annualInterestRate) {
+    double monthlyInterestRate;
+    annualInterestRate = 0.45 * 100;
+    monthlyInterestRate = annualInterestRate / 12;
+    System.out.println("The annual interest rate is: " + annualInterestRate);
+
+}
+}
