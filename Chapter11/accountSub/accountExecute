@@ -47,7 +47,8 @@ public class account extends accountSavingSub{
                 System.out.println("3. Deposit");
                 System.out.println("4. Savings Account");
                 System.out.println("5. View Interest");
-                System.out.println("6. Exit");
+                System.out.println("6. Account summary");
+                System.out.println("7. Exit");
                 System.out.print("Enter choice: ");
                 int entry = input.nextInt();
 
@@ -68,9 +69,12 @@ public class account extends accountSavingSub{
                         annualInterestRate(annualInterestRate);
                         break;
                     case 6:
+                        account acc = new account(); 
+                        System.out.println(acc.toString());
+                        break;
+                    case 7:
                         System.out.println("Thanks for using ChaseR Bank\n");
                         running = false;
-                        break;
                     default:
                         System.out.println("Invalid input. Please enter 1-6.");}
                 }
@@ -127,6 +131,12 @@ public static void withDraw(Scanner input) {
                 System.out.println("The annual interest rate per month is: " + annualInterestRate);
 
         }
+            // Return to String
+            @Override
+        public String toString() {
+        return String.format("Account Balance: $%.2f\nSavings Balance: $%.2f\nAnnual Interest Rate: %.2f\n",
+            accountBalance, accountSavingSub, overDraft, annualInterestRate * 100);
+}
     }
       
                 
