@@ -1,0 +1,132 @@
+package Chapter11;
+import java.util.Scanner;
+public class account extends accountSavingSub{
+    
+
+
+
+   
+    // Account setup
+    private static final int[] IDS = {1122, 2122, 3122, 4122, 5122, 6122, 7122, 8122, 9122};
+    private static double accountBalance = 100000.00;
+    private static double accountSavingSub = 20000.00;
+    private static double overDraft = 25;
+    private static double annualInterestRate = 0.45;
+	 
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        while (true) {
+            // Login process
+            int accountID = -1;
+            boolean found = false;
+            while (!found) {
+                System.out.print("Please enter account ID number: ");
+                accountID = input.nextInt();
+                for (int id : IDS) {
+                    if (accountID == id) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    System.out.println("I'm sorry, the account ID number is incorrect. Please re-enter account ID number.");
+                }
+            }
+
+            // Account Welcome
+            System.out.println("Welcome member number: " + accountID);
+
+            // Menu loop
+            boolean running = true;
+            while (running) {
+                System.out.println("\nMain Menu:");
+                System.out.println("1. View Balance");
+                System.out.println("2. Withdraw");
+                System.out.println("3. Deposit");
+                System.out.println("4. Savings Account");
+                System.out.println("5. View Interest");
+                System.out.println("6. Exit");
+                System.out.print("Enter choice: ");
+                int entry = input.nextInt();
+
+                switch (entry) {
+                    case 1:
+                        System.out.printf("Your balance is: $%.2f\n", accountBalance);
+                        break;
+                    case 2:
+                        withDraw(input);
+                        break;
+                    case 3:
+                        deposit(input);
+                        break;
+                    case 4:
+                        savingsMenu(accountSavingSub);
+                        break;
+                    case 5:
+                        annualInterestRate(annualInterestRate);
+                        break;
+                    case 6:
+                        System.out.println("Thanks for using ChaseR Bank\n");
+                        running = false;
+                        break;
+                    default:
+                        System.out.println("Invalid input. Please enter 1-6.");}
+                }
+            }
+    }
+
+
+//Withdraw loop
+public static void withDraw(Scanner input) {
+    System.out.print("How much would you like to withdraw? ");
+    double amount = input.nextDouble();
+    if (amount > accountBalance) {
+        System.out.println("The amount exceeds your account balance. Please enter an amount equal to or less than $" + accountBalance);
+        double potentialNewBalance = accountBalance - amount;
+
+        if (potentialNewBalance < 0) {
+            if (potentialNewBalance >= overDraft) {
+                // Overdraft occurred, apply fee
+                accountBalance = potentialNewBalance - overDraft;
+                System.out.println("Insufficient funds. Overdraft fee of $" + overDraft + " applied.");
+                System.out.println("New balance: $" + accountBalance);
+            } else {
+                System.out.println("Transaction declined. Exceeds withdraw limit.");
+                System.out.printf("Current balance: %.2f\n", accountBalance);}
+    } else if (amount <= 0) {
+        System.out.println("Withdrawal amount must be greater than 0.");
+
+    } else {
+        accountBalance -= amount;
+        System.out.printf("After your withdrawal, your new balance is: $%.2f\n", accountBalance);
+        }
+    }
+}
+
+
+    //Deposit loop
+         public static void deposit(Scanner input) {
+             System.out.print("Please enter the amount to deposit: ");
+             double amount = input.nextDouble();
+             if (amount <= 0) {
+                 System.out.println("Deposit amount must be greater than 0.");
+             } else {
+                 accountBalance += amount;
+                 System.out.printf("After your deposit, your new balance is: $%.2f\n", accountBalance);
+
+            
+             }
+            }
+            // Annual interest rate
+        public static void annualInterestRate(double monthlyIntersetRate) {
+            double monthlyInterestRate;
+            annualInterestRate = 0.45;
+            monthlyInterestRate = annualInterestRate / 12;
+                System.out.println("The annual interest rate per month is: " + annualInterestRate);
+
+        }
+    }
+      
+                
