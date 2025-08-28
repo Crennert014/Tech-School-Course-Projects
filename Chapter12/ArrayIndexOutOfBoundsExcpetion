@@ -1,0 +1,35 @@
+package chapter12;
+
+import java.util.Random;
+import java.util.Scanner;
+public class ArrayIndexOutOfBoundsException {
+
+    
+
+    public ArrayIndexOutOfBoundsException() {
+        int arraySize = 100;
+        
+        int[] randomNumbers = new int[arraySize]; 
+        Random random = new Random();
+            for (int i = 0; i< arraySize; i++){
+            randomNumbers[i] = random.nextInt();
+        
+        Scanner input = new Scanner(System.in);
+            System.out.println("Please enter the index of the Array: ");
+                int arrayIndex = input.nextInt();
+                
+                    if ( arrayIndex < 100 || arrayIndex > 0) {
+                        System.out.println(" Random int are: " + randomNumbers[i]);
+                    }
+                    else if ( arrayIndex > 100 || arrayIndex < 0){
+                        System.out.println("Out of Bounds");
+                    }
+               
+       
+        }
+    }
+}
+
+        
+    
+
