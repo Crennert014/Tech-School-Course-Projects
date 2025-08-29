@@ -2,34 +2,32 @@ package chapter12;
 
 import java.util.Random;
 import java.util.Scanner;
-public class ArrayIndexOutOfBoundsException {
 
-    
-
-    public ArrayIndexOutOfBoundsException() {
-        int arraySize = 100;
-        
-        int[] randomNumbers = new int[arraySize]; 
-        Random random = new Random();
-            for (int i = 0; i< arraySize; i++){
-            randomNumbers[i] = random.nextInt();
-        
+public class ArrayIndex {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-            System.out.println("Please enter the index of the Array: ");
-                int arrayIndex = input.nextInt();
-                
-                    if ( arrayIndex < 100 || arrayIndex > 0) {
-                        System.out.println(" Random int are: " + randomNumbers[i]);
-                    }
-                    else if ( arrayIndex > 100 || arrayIndex < 0){
-                        System.out.println("Out of Bounds");
-                    }
-               
-       
+        int[] randomNumbers = new int[100];
+        Random random = new Random();
+
+        // Random number generator
+        for (int i = 0; i < randomNumbers.length; i++) {
+            randomNumbers[i] = random.nextInt(1000);
         }
+
+        // User for input
+        System.out.print("Please enter the index of the array (min: 0, max: 99): ");
+        int index = input.nextInt(); 
+        // Exception loop
+        try {
+            if (index < 0 || index >= randomNumbers.length) {
+                throw new IndexOutOfBoundsException("Index out of bounds. Must be between 0 and 99.");
+            }
+
+            System.out.println("Random number at index " + index + " is: " + randomNumbers[index]);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+       
+        input.close();
     }
 }
-
-        
-    
-
