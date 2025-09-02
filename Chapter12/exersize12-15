@@ -1,0 +1,89 @@
+package chapter12;
+
+import java.io.*;
+import java.util.*;
+
+public class exersize12_15 {
+
+    public static void main(String[] args) {
+        String fileName = "Exercise12_15.txt";
+
+        int count = 100;
+        int[] randomNum = new int[count];
+
+        // Random number generator
+        Random random = new Random();
+        for (int i = 0; i < randomNum.length; i++) {
+            randomNum[i] = random.nextInt(1000);   
+        }
+
+        // Save the random numbers to file
+        saveRandomNum(fileName, randomNum);
+
+        // Read the random numbers back from the file
+        int[] numbersFromFile = readNumbersFromFile(fileName);
+
+        
+        Arrays.sort(numbersFromFile);
+
+        // Display the sorted numbers
+        System.out.println("Sorted random numbers: ");
+        for (int number : numbersFromFile) {
+            System.out.println(number);
+        }
+    }
+
+    // Save random numbers to the file
+    public static void saveRandomNum(String fileName, int[] randomNum) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName, true))) {
+            StringBuilder sb = new StringBuilder();
+
+            // Appending random numbers to string
+            for (int num : randomNum) {
+                sb.append(num).append("  ");
+            }
+
+            // Write the numbers to the file
+            pw.println(sb.toString());
+        } catch (IOException e) {
+            System.err.println("Error saving entry: " + e.getMessage());
+        }
+    }
+
+    // Read random numbers from the file
+    public static int[] readNumbersFromFile(String fileName) {
+        List<Integer> numbersList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            // Read each line from the file
+            while ((line = br.readLine()) != null) {
+                
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+                
+                String[] numberStrings = line.split(",");
+                for (String numStr : numberStrings) {
+                    try {
+                        numbersList.add(Integer.parseInt(numStr.trim()));
+                    } catch (NumberFormatException e) {
+                        System.err.println("Printing numbers in file:  " + fileName + numStr.trim());
+                        
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: File not found at path: " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+
+        // Convert list of numbers to array
+        int[] numbersArray = new int[numbersList.size()];
+        for (int i = 0; i < numbersList.size(); i++) {
+            numbersArray[i] = numbersList.get(i);
+        }
+
+        return numbersArray;
+    }
+}
