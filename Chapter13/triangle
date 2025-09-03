@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+
+public class triangle extends GeometricObject {
+    public static void main(String[] args) {
+        double side1= 0; double side2 = 0; double side3 = 0;
+        java.lang.String GeometricObject;}
+
+	public triangle( double side1, double side2, double side3) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the three sides of the Trinagle: ");
+			side1 = input.nextDouble();
+			side2 = input.nextDouble();
+			side3 = input.nextDouble();
+
+	}
+
+	
+    
+    
+    
+    
+    @Override
+	public void doublgetArea() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'doublgetArea'");
+	}
+
+	@Override
+	public void doublegetPerimeter() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'doublegetPerimeter'");
+	}
+}
