@@ -1,34 +1,92 @@
+package Chapter13;
+
 import java.util.Scanner;
 
+public class Triangle extends GeometricObject {
+    private double side1, side2, side3;
 
-public class triangle extends GeometricObject {
-    public static void main(String[] args) {
-        double side1= 0; double side2 = 0; double side3 = 0;
-        java.lang.String GeometricObject;}
+    // Constructors
+    public Triangle() {
+        this(1.0, 1.0, 1.0);
+    }
 
-	public triangle( double side1, double side2, double side3) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please enter the three sides of the Trinagle: ");
-			side1 = input.nextDouble();
-			side2 = input.nextDouble();
-			side3 = input.nextDouble();
+    public Triangle(double side1, double side2, double side3) {
+        super(); // Default GeometricObject
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
 
-	}
+    public Triangle(double side1, double side2, double side3, String color, boolean filled) {
+        super(color, filled); // GeometricObject with color & filled
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
 
-	
-    
-    
-    
-    
+    // Getters
+    public double getSide1() { return side1; }
+    public double getSide2() { return side2; }
+    public double getSide3() { return side3; }
+
+    // Area using Heron's formula
+    public double getArea() {
+        double s = getPerimeter() / 2.0;
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+
+    // Perimeter
+    public double getPerimeter() {
+        return side1 + side2 + side3;
+    }
+
+    // toString override
     @Override
-	public void doublgetArea() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'doublgetArea'");
-	}
+    public String toString() {
+        return "Triangle: side1 = " + side1 + ", side2 = " + side2 + ", side3 = " + side3 + 
+               "\n" + super.toString();
+    }
 
-	@Override
-	public void doublegetPerimeter() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'doublegetPerimeter'");
-	}
+    // Main method
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double side1, side2, side3;
+
+        // Get triangle sides
+        while (true) {
+            System.out.print("Enter three sides of the triangle separated by space: ");
+            side1 = input.nextDouble();
+            side2 = input.nextDouble();
+            side3 = input.nextDouble();
+
+            System.out.println("You entered: " + side1 + ", " + side2 + ", " + side3);
+            System.out.print("Is this correct? (1 = Yes, 2 = No): ");
+            int confirm = input.nextInt();
+            if (confirm == 1) break;
+        }
+
+        // Color and fill info
+        String color = "None";
+        boolean filled = false;
+
+        System.out.print("Would you like to assign a color? (1 = Yes, 2 = No): ");
+        int colorChoice = input.nextInt();
+        if (colorChoice == 1) {
+            System.out.print("Enter the color: ");
+            color = input.next();
+        }
+
+        System.out.print("Should the triangle be filled? (1 = Yes, 2 = No): ");
+        int fillChoice = input.nextInt();
+        filled = (fillChoice == 1);
+
+        // Create Triangle object
+        Triangle triangle = new Triangle(side1, side2, side3, color, filled);
+
+        // Output
+        System.out.println("\n--- Triangle Details ---");
+        System.out.println(triangle);
+        System.out.printf("Area: %.2f\n", triangle.getArea());
+        System.out.printf("Perimeter: %.2f\n", triangle.getPerimeter());
+    }
 }
