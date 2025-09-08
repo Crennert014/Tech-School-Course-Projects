@@ -9,8 +9,8 @@ class Display implements Colorable {
 public void howToColor(){
     System.out.println("Color all three sides");
 }
-}
-public class Main {
+
+
     public static void main(String[] args) {
         Display display = new Display();
         display.howToColor();
