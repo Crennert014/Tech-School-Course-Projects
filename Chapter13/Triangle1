@@ -1,0 +1,14 @@
+package Chapter13;
+import java.util.Random;
+
+public class Triangle1 {
+        public static void main(String[] args) {
+            int triangles = 5;
+            double[] triangle = new double[triangles];
+            Random r = new Random();
+                for ( int i = 0; i < triangle.length; i++){
+                    triangle[i] = r.nextInt(10);
+                    System.out.println(" " +triangle);}
+                    
+        }
+    }
