@@ -1,7 +1,67 @@
 package Chapeter13_11;
 
-public class Octagon
+public class Octagon 
 extends GeometricObject
 implements Comparable, Cloneable {
 
+    // Data field declaration 
+    private double side1, side2, side3, side4,side5, 
+     side6, side7,  side8;
+    
+    // Constructor
+    public Octagon() {
+        this(1,1,1,1,1,1,1,1);
+    }
+    // Default GeometricObject
+    public Octagon(double side1,double side2, double side3, double side4, double side5, 
+            double side6, double side7, double side8){
+        super();
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+        this.side4 = side4;
+        this.side5 = side5;
+        this.side6 = side6;
+        this.side7 = side7;
+        this.side8 = side8;
+    }
+     // Getters
+    public double getSide1() { return side1; }
+    public double getSide2() { return side2; }
+    public double getSide3() { return side3; }
+    public double getSide4() { return side4; }
+    public double getSide5() { return side5; }
+    public double getSide6() { return side6; }
+    public double getSide7() { return side7; }
+    public double getSide8() { return side8; }
+
+ //Area using formula
+    public void doublegetArea() {
+        double a = (side1 + side2 + side3 + side4 + side5 + side6 + side7 + side8) / 8.0;
+            return 2 * (1 + Math.sqrt(2)) * a * a;    
+        }
+    //Clone Octagon
+    @Override
+    public Object clone(){
+        
+        try{
+            Octagon OctagonClone = (Octagon)super.clone();
+            return super.clone();
+        }
+        catch (CloneNotSupportedException ex){
+            return null;
+        }
+        }
+        //Implementing compareTo
+    
+        public void int compareTo(Octagon o) {
+            return Double.compare(this.getArea(), o.getArea());
+        }
+    
+        // For demonstration purpose
+        public void printComparison(Octagon other) {
+            System.out.println("Area: " + this.getArea() + " CompareTo result: " + this.compareTo(other));
+        }
+    
+}
     
