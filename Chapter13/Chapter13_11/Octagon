@@ -1,20 +1,17 @@
-package Chapeter13_11;
+package Chapter13;
 
-public class Octagon 
-extends GeometricObject
-implements Comparable, Cloneable {
+public class Octagon extends GeometricObject1 implements Comparable, Cloneable {
 
     // Data field declaration 
-    private double side1, side2, side3, side4,side5, 
-     side6, side7,  side8;
+    private double side1, side2, side3, side4, side5, side6, side7, side8;
     
     // Constructor
     public Octagon() {
-        this(1,1,1,1,1,1,1,1);
+        this(1, 1, 1, 1, 1, 1, 1, 1);
     }
-    // Default GeometricObject
-    public Octagon(double side1,double side2, double side3, double side4, double side5, 
-            double side6, double side7, double side8){
+
+    public Octagon(double side1, double side2, double side3, double side4, double side5, 
+                   double side6, double side7, double side8){
         super();
         this.side1 = side1;
         this.side2 = side2;
@@ -25,7 +22,8 @@ implements Comparable, Cloneable {
         this.side7 = side7;
         this.side8 = side8;
     }
-     // Getters
+
+    // Getters
     public double getSide1() { return side1; }
     public double getSide2() { return side2; }
     public double getSide3() { return side3; }
@@ -35,33 +33,35 @@ implements Comparable, Cloneable {
     public double getSide7() { return side7; }
     public double getSide8() { return side8; }
 
- //Area using formula
-    public void doublegetArea() {
+    // Area using formula 
+   
+    public double getArea() {
         double a = (side1 + side2 + side3 + side4 + side5 + side6 + side7 + side8) / 8.0;
-            return 2 * (1 + Math.sqrt(2)) * a * a;    
-        }
-    //Clone Octagon
+        return 2 * (1 + Math.sqrt(2)) * a * a;    
+    }
+
+    // Perimeter method required by GeometricObject
+    public double getPerimeter() {
+        return side1 + side2 + side3 + side4 + side5 + side6 + side7 + side8;
+    }
+
+    // Clone Octagon
     @Override
-    public Object clone(){
-        
-        try{
-            Octagon OctagonClone = (Octagon)super.clone();
-            return super.clone();
+    public Octagon clone() {
+       
+        return new Octagon(side1, side2, side3, side4, side5, side6, side7, side8);
+    }
+
+    // Implementing compareTo
+    public int compareTo(Object o) {
+        if (!(o instanceof Octagon)) {
+            throw new ClassCastException("Object is not an Octagon");
         }
-        catch (CloneNotSupportedException ex){
-            return null;
-        }
-        }
-        //Implementing compareTo
-    
-        public void int compareTo(Octagon o) {
-            return Double.compare(this.getArea(), o.getArea());
-        }
-    
-        // For demonstration purpose
-        public void printComparison(Octagon other) {
-            System.out.println("Area: " + this.getArea() + " CompareTo result: " + this.compareTo(other));
-        }
-    
+        Octagon other = (Octagon) o;
+        return Double.compare(this.getArea(), other.getArea());
+    }
+
+    public void printComparison(Octagon other) {
+        System.out.println("Area: " + this.getArea() + " CompareTo result: " + this.compareTo(other));
+    }
 }
-    
