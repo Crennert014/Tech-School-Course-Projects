@@ -1,0 +1,27 @@
+package Chapter13;
+
+
+public class OctagonTest extends Octagon {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        // Create an Octagon object
+        Octagon octagon1 = new Octagon(5, 5, 5, 5, 5, 5, 5, 5);
+        
+        // Display area and perimeter
+        System.out.println("Area: " + octagon1.getArea());
+        System.out.println("Perimeter: " + octagon1.getPerimeter());
+        
+        // Clone the octagon
+        Octagon octagon2 = octagon1.clone();
+        
+        // Compare the two octagons
+        int comparison = octagon1.compareTo(octagon2);
+        if (comparison == 0) {
+            System.out.println("The two octagons are equal.");
+        } else if (comparison > 0) {
+            System.out.println("The first octagon is larger than the second.");
+        } else {
+            System.out.println("The first octagon is smaller than the second.");
+        }
+    }
+
+}
