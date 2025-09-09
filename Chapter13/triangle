@@ -9,16 +9,16 @@ public class Triangle extends GeometricObject {
     public Triangle() {
         this(1.0, 1.0, 1.0);
     }
-
+// Default GeometricObject
     public Triangle(double side1, double side2, double side3) {
-        super(); // Default GeometricObject
+        super(); 
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
     }
-
+// GeometricObject with color & filled
     public Triangle(double side1, double side2, double side3, String color, boolean filled) {
-        super(color, filled); // GeometricObject with color & filled
+        super(color, filled); 
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
@@ -30,12 +30,14 @@ public class Triangle extends GeometricObject {
     public double getSide3() { return side3; }
 
     // Area using Heron's formula
+    @Override
     public double getArea() {
         double s = getPerimeter() / 2.0;
         return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
     }
 
     // Perimeter
+    @Override
     public double getPerimeter() {
         return side1 + side2 + side3;
     }
@@ -43,8 +45,12 @@ public class Triangle extends GeometricObject {
     // toString override
     @Override
     public String toString() {
-        return "Triangle: side1 = " + side1 + ", side2 = " + side2 + ", side3 = " + side3 + 
-               "\n" + super.toString();
+        return "Triangle: side1 = " + side1 + ", side2 = " + side2 + ", side3 = " + side3 + "\n" + super.toString();
+    }
+
+    // Helper: Triangle validity
+    public static boolean isValidTriangle(double a, double b, double c) {
+        return (a + b > c) && (a + c > b) && (b + c > a);
     }
 
     // Main method
@@ -58,6 +64,11 @@ public class Triangle extends GeometricObject {
             side1 = input.nextDouble();
             side2 = input.nextDouble();
             side3 = input.nextDouble();
+
+            if (!isValidTriangle(side1, side2, side3)) {
+                System.out.println("Invalid triangle sides! The sum of any two sides must be greater than the third.");
+                continue; // Reprompt
+            }
 
             System.out.println("You entered: " + side1 + ", " + side2 + ", " + side3);
             System.out.print("Is this correct? (1 = Yes, 2 = No): ");
@@ -78,11 +89,13 @@ public class Triangle extends GeometricObject {
 
         System.out.print("Should the triangle be filled? (1 = Yes, 2 = No): ");
         int fillChoice = input.nextInt();
-        filled = (fillChoice == 1);
+        filled = fillChoice == 1;
 
         // Create Triangle object
         Triangle triangle = new Triangle(side1, side2, side3, color, filled);
-
+            triangle.setColor(color);
+            triangle.setFilled(filled); 
+            input.close();
         // Output
         System.out.println("\n--- Triangle Details ---");
         System.out.println(triangle);
