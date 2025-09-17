@@ -1,0 +1,199 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+public class clockPane extends Application {
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+    
+    public class ClockPane extends Pane {
+        private int hour;
+        private int minute;
+        private int second;
+        private boolean hourHandVisible = true;
+        private boolean minuteHandVisible = true;
+        private boolean secondHandVisible = true;
+        private double w = 250;
+        private double h = 250;
+
+        public ClockPane() {
+            setCurrentTime();
+        }
+
+        public ClockPane(int hour, int minute, int second) {
+            this.hour = hour;
+            this.minute = minute;
+            this.second = second;
+            paintClock();
+        }
+
+        public int getHour() {
+            return hour;
+        }
+
+        public void setHour(int hour) {
+            this.hour = hour;
+            paintClock();
+        }
+
+        public int getMinute() {
+            return minute;
+        }
+
+        public void setMinute(int minute) {
+            this.minute = minute;
+            paintClock();
+        }
+
+        public int getSecond() {
+            return second;
+        }
+
+        public void setSecond(int second) {
+            this.second = second;
+            paintClock();
+        }
+
+        public boolean isHourHandVisible() {
+            return hourHandVisible;
+        }
+
+        public void setHourHandVisible(boolean hourHandVisible) {
+            this.hourHandVisible = hourHandVisible;
+            paintClock();
+        }
+
+        public boolean isMinuteHandVisible() {
+            return minuteHandVisible;
+        }
+
+        public void setMinuteHandVisible(boolean minuteHandVisible) {
+            this.minuteHandVisible = minuteHandVisible;
+            paintClock();
+        }
+
+        public boolean isSecondHandVisible() {
+            return secondHandVisible;
+        }
+
+        public void setSecondHandVisible(boolean secondHandVisible) {
+            this.secondHandVisible = secondHandVisible;
+            paintClock();
+        }
+
+        public double getW() {
+            return w;
+        }
+
+        public void setW(double w) {
+            this.w = w;
+            paintClock();
+        }
+
+        public double getH() {
+            return h;
+        }
+
+        public void setH(double h) {
+            this.h = h;
+            paintClock();
+        }
+
+        public void setCurrentTime() {
+            Random random = new Random();
+            this.hour = random.nextInt(11);
+            this.minute = 30;
+            
+            paintClock();
+        }
+
+        protected void paintClock() {
+            double clockRadius = Math.min(w, h) * 0.4;
+            double centerX = w / 2;
+            double centerY = h / 2;
+
+            getChildren().clear();
+
+             /*  Draw clock face
+            Circle clockFace = new Circle(centerX, centerY, clockRadius);
+            clockFace.setFill(Color.WHITE);
+            clockFace.setStroke(Color.BLACK);
+            getChildren().add(clockFace); */ 
+            
+
+            // Draw hour hand
+            if (hourHandVisible) {
+                double hourHandLength = clockRadius * 0.5;
+                double hourX = centerX + hourHandLength * Math.sin(Math.toRadians(hour * 30));
+                double hourY = centerY - hourHandLength * Math.cos(Math.toRadians(hour * 30));
+                Line hourHand = new Line(centerX, centerY, hourX, hourY);
+                hourHand.setStrokeWidth(6);
+                getChildren().add(hourHand);
+            }
+
+            // Draw minute hand
+            if (minuteHandVisible) {
+                double minuteHandLength = clockRadius * 0.7;
+                double minuteX = centerX + minuteHandLength * Math.sin(Math.toRadians(minute * 6));
+                double minuteY = centerY - minuteHandLength * Math.cos(Math.toRadians(minute * 6));
+                Line minuteHand = new Line(centerX, centerY, minuteX, minuteY);
+                minuteHand.setStrokeWidth(4);
+                getChildren().add(minuteHand);
+            }
+
+            /*  Draw second hand
+            if (secondHandVisible) {
+                double secondHandLength = clockRadius * 0.9;
+                double secondX = centerX + secondHandLength * Math.sin(Math.toRadians(second * 6));
+                double secondY = centerY - secondHandLength * Math.cos(Math.toRadians(second * 6));
+                Line secondHand = new Line(centerX, centerY, secondX, secondY);
+                secondHand.setStrokeWidth(2);
+                secondHand.setStroke(Color.RED);
+                getChildren().add(secondHand); */
+            }
+
+            /* Draw clock numbers
+            for (int i = 1; i <= 12; i++) {
+                double numberX = centerX + (clockRadius * 0.8) * Math.sin(Math.toRadians(i * 30));
+                double numberY = centerY - (clockRadius * 0.8) * Math.cos(Math.toRadians(i * 30));
+                Text number = new Text(numberX - 5, numberY + 5, String.valueOf(i));
+                getChildren().add(number); */
+            }
+        
+    
+
+   
+    @Override
+    public void start(Stage primaryStage) {
+        ClockPane clock = new ClockPane();
+        clock.setW(300);
+        clock.setH(300);
+        clock.setHourHandVisible(true);
+        clock.setMinuteHandVisible(true);
+        clock.setSecondHandVisible(true);
+        clock.setCurrentTime();
+
+        StackPane root = new StackPane();
+        root.getChildren().add(clock);
+
+        Scene scene = new Scene(root, 400, 400);
+
+        primaryStage.setTitle("Clock Pane");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    }
