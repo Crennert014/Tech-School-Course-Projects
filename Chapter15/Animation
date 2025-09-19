@@ -1,4 +1,4 @@
-package Chapter15;
+package SchoolProjects.Chapter15;
 
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
@@ -21,52 +21,74 @@ import javafx.util.Duration;
         @Override // Override the start method in the Application class 
     public void start(Stage primaryStage) {
         // Create a pane
-    Pane pane = new Pane();
+        Pane pane = new Pane();
 
         // Create a rectangle
-    Rectangle rectangle = new Rectangle (0, 0, 25, 50);
-        rectangle.setFill(Color.ORANGE);
+    Rectangle rectangle = new Rectangle(0, 0, 30, 50);
+    rectangle.setStroke(Color.BLACK);
+    rectangle.setFill(Color.ORANGE);
+    // Center the rectangle on the polygon path
+    rectangle.setTranslateX(rectangle.getWidth() / 2);
+    rectangle.setTranslateY(rectangle.getHeight() / -2);
+
+    // Fade transition for opacity
+    javafx.animation.FadeTransition fade = new javafx.animation.FadeTransition(Duration.millis(2000), rectangle);
+    fade.setFromValue(1.0);
+    fade.setToValue(0.2);
+    fade.setCycleCount(Timeline.INDEFINITE);
+    fade.setAutoReverse(true);
+    fade.play();
 
         // Create a Pentagon
-    Polygon polygon = new Polygon();
-    polygon.setFill(Color.RED);
-    polygon.setStroke(Color.BLACK);
-    ObservableList<Double> list = polygon.getPoints();
-    
-    double centerX = polygon.getWidth() / 2, centerY = getHeight() / 2;
-    double radius = Math.min(getWidth(), getHeight()) * 0.4;
-    int s = 5;
-    // Add points to the polygon list
-    for (int i = 0; i < s; i++) {
-    list.add(centerX + radius * Math.cos(2 * i * Math.PI / s));
-    list.add(centerY - radius * Math.sin(2 * i * Math.PI / s));
-    }   
-    StackPane stackPane = new StackPane();
-    stackPane.getChildren().add(polygon);
-    getChildren().add(stackPane);
-    polygon.setStroke(Color.WHITE); // White border
-    polygon.setStrokeWidth(8); // Thicker border
-    
-    getChildren().add(polygon);
+        Polygon polygon = new Polygon();
+        polygon.setFill(Color.BLUE);
+        polygon.setStroke(Color.BLACK);
+        ObservableList<Double> list = polygon.getPoints();
+        polygon.setRotate(-18); 
 
-        // Create a path transition
-    PathTransition pt = new PathTransition();
-    pt.setDuration(Duration.millis(4000));
-    pt.setPath(circle);
-    pt.setNode(rectangle);
-    pt.setOrientation(
-    PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-    pt.setCycleCount(Timeline.INDEFINITE);
-    pt.setAutoReverse(true);
-    pt.play(); // Start animation
+        double centerX = 125, centerY = 100;
+        double radius = 55;
+        int s = 5;
+        // Add points to the polygon list
+        for (int i = 0; i < s; i++) {
+            list.add(centerX + radius * Math.cos(2 * i * Math.PI / s));
+            list.add(centerY - radius * Math.sin(2 * i * Math.PI / s));
+        }
 
-    circle.setOnMousePressed(e -> pt.pause());
-    circle.setOnMouseReleased(e -> pt.play());
+        // Add polygon to a StackPane for visual effect (thick white border)
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(polygon);
+        stackPane.setLayoutX(100);
+        stackPane.setLayoutY(25);
+        polygon.setStroke(Color.WHITE);
+        polygon.setStrokeWidth(8);
+
+        // Add stackPane (with polygon) and the rectangle to the main pane
+        pane.getChildren().addAll(stackPane, rectangle);
+
+        // Create a path transition for the rectangle to move around the polygon
+        PathTransition pt = new PathTransition();
+        pt.setDuration(Duration.millis(4000));
+        pt.setPath(polygon);
+        pt.setNode(rectangle);
+        pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pt.setCycleCount(Timeline.INDEFINITE);
+        pt.setAutoReverse(true);
+        pt.play(); 
+
+        // Pause/resume animation on polygon mouse press/release
+        polygon.setOnMousePressed(e -> {
+            if (e.getButton() == javafx.scene.input.MouseButton.PRIMARY) {
+                pt.pause();
+            } else if (e.getButton() == javafx.scene.input.MouseButton.SECONDARY) {
+                pt.play();
+            }
+        });
 
         // Create a scene and place it in the stage
-    Scene scene = new Scene(pane, 250, 200);
-    primaryStage.setTitle("PathTransitionDemo"); // Set the stage title
-    primaryStage.setScene(scene); // Place the scene in the stage
-    primaryStage.show(); // Display the stage
-   }
-  }
+        Scene scene = new Scene(pane, 250, 200);
+        primaryStage.setTitle("Animation"); 
+        primaryStage.setScene(scene); 
+        primaryStage.show(); 
+    }
+}
