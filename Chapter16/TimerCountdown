@@ -23,7 +23,7 @@ public class TimerCountdown extends Application {
     private LocalTime endTime;
     private Button playSongButton;
     private VBox root;
-    private static final int TIMER_SECONDS = 30; 
+    private static final int TIMER_SECONDS = 5; 
 
     @Override
     public void start(Stage primaryStage) {
@@ -92,7 +92,7 @@ public class TimerCountdown extends Application {
 
     private void playSong() {
         // Replace this path with your local song file
-        String songPath = "file: /Users/student/Downloads/_Two Feet - Apple Music.html"; // Example: "file:C:/Users/Me/Music/song.mp3"
+        String songPath = "file:Users/student/Downloads/anthem0.mp3;";
         try {
             Media media = new Media(songPath);
             MediaPlayer mediaPlayer = new MediaPlayer(media);
