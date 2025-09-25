@@ -1,0 +1,33 @@
+package Chapter17.Ch17_01;
+import java.util.random.RandomGenerator;
+
+public class TextFile17_01 {
+    public static void main(String[] args) {
+        java.util.Scanner input = new java.util.Scanner(System.in);
+        System.out.print("Enter a file name: Exersize17_01.txt ");
+        String fileName = input.nextLine();
+        java.io.File file = new java.io.File(fileName);
+        if (file.exists()) {
+            java.util.Scanner inputFile = null;
+            try {
+                inputFile = new java.util.Scanner(file);
+                int count = 100;
+                while (inputFile.hasNext()) {
+                    inputFile.next();
+                    count++;
+                }
+                System.out.println("The number of words in the file " + fileName + " is " + count);
+            } catch (java.io.FileNotFoundException e) {
+                System.out.println("File not found: " + e.getMessage());
+            } finally {
+                if (inputFile != null) {
+                    inputFile.close();
+                }
+            }
+        } else {
+            System.out.println("File " + fileName + " does not exist.");
+        }
+        input.close();
+    }
+
+}
