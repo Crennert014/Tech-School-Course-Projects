@@ -3,36 +3,35 @@ import java.io.*;
 import java.util.*;
 
 public class Ch17_03 {
+ private static final String fileName = "Exercise17_03.dat";
 
     public static void main(String[] args) {
-        String fileName = "Exercise17_03.dat";
-        int count = 100;
-        int[] writeInt = new int[count];
+        writeRandomIntegersToFile(fileName, 100);
+        readAndDisplayIntegersFromFile(fileName);
+        calculateSum();
+    }
+
+    public static void writeRandomIntegersToFile(String fileName, int count) {
         Random random = new Random();
-        for (int i = 0; i < writeInt.length; i++) {
-            writeInt[i] = random.nextInt(1000);
-        }
-        
         try (DataOutputStream output = new DataOutputStream(
-                new BufferedOutputStream(       
+                new BufferedOutputStream(
                         new FileOutputStream(fileName, true)))) {
-            for (int i = 0; i < writeInt.length; i++) {
-                output.writeInt(writeInt[i]);
-                output.writeByte(' '); 
+            for (int i = 0; i < count; i++) {
+                output.writeInt(random.nextInt(1000));
+                output.writeByte(' ');
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
 
-        
+    public static void readAndDisplayIntegersFromFile(String fileName) {
         System.out.println("Integers in the file:");
         try (DataInputStream input = new DataInputStream(
                 new BufferedInputStream(
                         new FileInputStream(fileName)))) {
             while (input.available() > 0) {
                 int value = input.readInt();
-                
-            
                 if (input.available() > 0) input.readByte();
                 System.out.print(value + " ");
             }
@@ -41,6 +40,26 @@ public class Ch17_03 {
             ex.printStackTrace();
         }
     }
-}
 
-       
+    public static int sumOfAllIntegers(DataInputStream input) throws IOException {
+        int sum = 0;
+        while (input.available() > 0) {
+            sum += input.readInt();
+            if (input.available() > 0) input.readByte(); // Skip space
+        }
+        return sum;
+    }
+
+    public static void calculateSum() {
+        System.out.println("Calculating sum of all integers in the file:");
+
+        try (DataInputStream input = new DataInputStream(
+                new BufferedInputStream(
+                        new FileInputStream(fileName)))) {
+            int sum = sumOfAllIntegers(input);
+            System.out.println("The sum of all integers: " + sum);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
