@@ -1,0 +1,46 @@
+package Chapter17.Ch17_03;
+import java.io.*;
+import java.util.*;
+
+public class Ch17_03 {
+
+    public static void main(String[] args) {
+        String fileName = "Exercise17_03.dat";
+        int count = 100;
+        int[] writeInt = new int[count];
+        Random random = new Random();
+        for (int i = 0; i < writeInt.length; i++) {
+            writeInt[i] = random.nextInt(1000);
+        }
+        
+        try (DataOutputStream output = new DataOutputStream(
+                new BufferedOutputStream(       
+                        new FileOutputStream(fileName, true)))) {
+            for (int i = 0; i < writeInt.length; i++) {
+                output.writeInt(writeInt[i]);
+                output.writeByte(' '); 
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        
+        System.out.println("Integers in the file:");
+        try (DataInputStream input = new DataInputStream(
+                new BufferedInputStream(
+                        new FileInputStream(fileName)))) {
+            while (input.available() > 0) {
+                int value = input.readInt();
+                
+            
+                if (input.available() > 0) input.readByte();
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+
+       
