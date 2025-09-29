@@ -1,0 +1,54 @@
+
+package Chapter17.Ch17_14;
+import java.util.Scanner;
+
+public class EncryptFile {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose operation: 1) Create file to encrypt  2) Encrypt  3) Decrypt");
+        int choice = sc.nextInt();
+        sc.nextLine(); // consume newline
+        if (choice == 1) {
+            System.out.print("Enter file name to create: ");
+            String fileName = sc.nextLine();
+            System.out.println("Enter text to save in the file (end with a blank line):");
+            try (java.io.PrintWriter writer = new java.io.PrintWriter(fileName)) {
+                String line;
+                while (!(line = sc.nextLine()).isEmpty()) {
+                    writer.println(line);
+                }
+                System.out.println("File saved: " + fileName);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else if (choice == 2) {
+            System.out.print("Enter input file name: ");
+            String inputFile = sc.nextLine();
+            System.out.print("Enter output file name: ");
+            String outputFile = sc.nextLine();
+            Encryptor.encrypt(inputFile, outputFile);
+        }
+
+
+         else if (choice == 3) {
+            System.out.print("Enter input file name: ");
+            String inputFile = sc.nextLine();
+            System.out.print("Enter output file name: ");
+            String outputFile = sc.nextLine();
+            Decryptor.decrypt(inputFile, outputFile);
+            // Display the decrypted file contents
+            System.out.println("Contents of decrypted file:");
+            try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(outputFile))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (Exception e) {
+                System.out.println("Error reading decrypted file: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Invalid choice.");
+        }
+    }
+}
+   
