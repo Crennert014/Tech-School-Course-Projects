@@ -1,0 +1,17 @@
+package Chapter17.Ch17_14;
+import java.io.*;
+
+public class Decryptor {
+    public static void decrypt(String inputFile, String outputFile) {
+        try (FileInputStream fis = new FileInputStream(inputFile);
+             FileOutputStream fos = new FileOutputStream(outputFile)) {
+            int b;
+            while ((b = fis.read()) != -1) {
+                fos.write((b - 5) & 0xFF);
+            }
+            System.out.println("Decryption complete. Output: " + outputFile);
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
