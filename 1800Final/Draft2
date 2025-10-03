@@ -1,0 +1,247 @@
+package FinalProject1800;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+
+public class QiManuversGUI extends Application {
+    private static final String[] WhatToLearn = {"Stance", "Breathing", "Movement", "Focus", "Meditation"};
+    private static final String[] Categories = {"8 Trigram", "Element", "Animal"};
+    private static final String[] Trigrams = {"Qian", "Kun", "Zhen", "Xun", "Kan", "Li", "Gen", "Dui"};
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Qi Gong Learning Guide");
+        VBox root = new VBox(15);
+        root.setPadding(new Insets(20));
+
+        Label intro = new Label("This program will help guide you through the learning of Qi Gong.\nIt will gently guide you and build skills in the following areas:");
+        ListView<String> skillsList = new ListView<>();
+        skillsList.getItems().addAll(WhatToLearn);
+        skillsList.setMaxHeight(100);
+
+        Label catLabel = new Label("Choose a Category:");
+        ComboBox<String> catCombo = new ComboBox<>();
+        catCombo.getItems().addAll(Categories);
+        catCombo.setPromptText("Select Category");
+
+        VBox detailsBox = new VBox(10);
+
+        catCombo.setOnAction(e -> {
+            detailsBox.getChildren().clear();
+            String selected = catCombo.getValue();
+            if (selected.equals("8 Trigram")) {
+                detailsBox.getChildren().add(new Label("The 8 Trigram comes from the I Ching, the ancient Chinese Book of Changes.\nIt represents fundamental principles of reality, seen as a range of eight interrelated concepts.\nEach Trigram consists of three lines stacked on top of each other, each line either 'broken' or 'unbroken', representing yin or yang.\nThe Eight Trigrams resemble Western elements (Earth, Water, Fire, Air), but with more relational nuance.\nEach Trigram has specific attributes, directions, family roles, seasons, and natural phenomena associated with it."));
+                ComboBox<String> trigramCombo = new ComboBox<>();
+                trigramCombo.getItems().addAll(Trigrams);
+                trigramCombo.setPromptText("Select Trigram");
+                Label trigramInfo = new Label();
+                trigramCombo.setOnAction(ev -> {
+                    trigramInfo.setText(getTrigramInfo(trigramCombo.getValue()));
+                });
+                detailsBox.getChildren().addAll(new Label("Choose a Trigram:"), trigramCombo, trigramInfo);
+            } else if (selected.equals("Element")) {
+                detailsBox.getChildren().add(new Label("Element Qi Gong focuses on the five elements: Wood, Fire, Earth, Metal, and Water. Each element has its own movements and meditations."));
+                ComboBox<String> elementCombo = new ComboBox<>();
+                elementCombo.getItems().addAll("Wood", "Fire", "Earth", "Metal", "Water");
+                elementCombo.setPromptText("Select Element");
+                Label elementInfo = new Label();
+                elementCombo.setOnAction(ev -> {
+                    elementInfo.setText(getElementInfo(elementCombo.getValue()));
+                });
+                detailsBox.getChildren().addAll(new Label("Choose an Element:"), elementCombo, elementInfo);
+
+            } else if (selected.equals("Animal")) {
+                detailsBox.getChildren().add(new Label("Animal Qi Gong draws inspiration from animal movements and spirits, such as Tiger, Dragon, Bear, Snake, and Crane."));
+                ComboBox<String> animalCombo = new ComboBox<>();
+                animalCombo.getItems().addAll("Tiger", "Dragon", "Bear", "Snake", "Crane");
+                animalCombo.setPromptText("Select Animal");
+                Label animalInfo = new Label();
+                animalCombo.setOnAction(ev -> {
+                    animalInfo.setText(getAnimalInfo(animalCombo.getValue()));
+                });
+                detailsBox.getChildren().addAll(new Label("Choose an Animal:"), animalCombo, animalInfo);
+            }
+        });
+
+        root.getChildren().addAll(intro, skillsList, catLabel, catCombo, detailsBox);
+        primaryStage.setScene(new Scene(root, 600, 500));
+        primaryStage.show();
+    }
+
+    private String getAnimalInfo(String value) {
+        switch (value) {
+            case "Tiger":
+                return "The Tiger represents strength, courage, and personal power. It is associated with the wood element and the spring season.";
+            case "Deer":
+                return "The Deer symbolizes gentleness, grace, and the ability to move through life with ease. It is linked to the earth element and the summer season.";
+            case "Bear":
+                return "The Bear embodies introspection, strength, and the power of the unconscious. It is associated with the water element and the winter season.";
+            case "Monkey":
+                return "The Monkey represents intelligence, adaptability, and playfulness. It is linked to the metal element and the autumn season.";
+            case "Crane":
+                return "The Crane symbolizes longevity, wisdom, and the ability to navigate between worlds. It is associated with the fire element and the summer season.";
+            default:
+                return "Select an Animal to see its attributes.";
+        }
+    }
+
+    private String getElementInfo(String value) {
+        switch (value) {
+            case "Wood":
+                return "Wood represents growth, vitality, and flexibility. It is associated with the spring season.";
+            case "Fire":
+                return "Fire symbolizes passion, energy, and transformation. It is linked to the summer season.";
+            case "Earth":
+                return "Earth embodies stability, nourishment, and grounding. It is associated with the late summer season.";
+            case "Metal":
+                return "Metal represents clarity, precision, and structure. It is linked to the autumn season.";
+            case "Water":
+                return "Water symbolizes flow, adaptability, and intuition. It is associated with the winter season.";
+            default:
+                return "Select an Element to see its attributes.";
+        }
+    }
+
+    private String getTrigramInfo(String trigram) {
+        switch (trigram) {
+            case "Qian":
+                return practiceQian();
+            case "Kun":
+                return practiceKun();
+            case "Zhen":
+                return practiceZhen();
+            case "Xun":
+                return practiceXun();
+            case "Kan":
+                return practiceKan();
+            case "Li":
+                return practiceLi();
+            case "Gen":
+                return practiceGen();
+            case "Dui":
+                return practiceDui();
+            default:
+                return "Select a Trigram to see begin the practice.";
+        }
+    }
+    private String practiceQian() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String qian : Trigrams) {
+            sb.append("Qian represents Heaven, creativity, strength, and the father figure. It is associated with the northwest direction and summer season.\n");
+            sb.append("Relation to Heaven: Emphasizes releasing, expanding, and clearing stuck energy, embodying the creative and purifying force of Heaven.\n");
+            sb.append("Focus: Connecting to infinite energy by clearing what no longer serves.\n");
+            sb.append("For Qian, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a strong, creative energy flowing from the heavens down into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        } 
+        return sb.toString();
+    }
+
+    private String practiceKun() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String kun : Trigrams) {
+            sb.append("kun is latest summer and represents earth, receptivity, nurturing, and the mother figure.\n");
+            sb.append("For Kun we will begin with a basic state of standing meditation, focusing on grounding and connecting with the earth.\n");
+            sb.append("Begin by standing with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep slow breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize roots extending from your feet deep into the earth providing a sense of stability and groundedness.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceZhen() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String zhen : Trigrams) {
+            sb.append("Zhen represents Thunder, movement, initiative, and the eldest son. It is associated with the east direction and spring season.\n");
+            sb.append("For Zhen, we will focus on dynamic movements that mimic the energy of thunder.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("Raise your arms above your head as you inhale deeply, then bring them down forcefully to your sides as you exhale, simulating a thunderclap.\n");
+            sb.append("Repeat this movement several times, feeling the power and energy of thunder coursing through your body.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceXun() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String xun : Trigrams) {
+            sb.append("Xun represents Wind, gentleness, penetration, and the eldest daughter. It is associated with the southeast direction and late spring season.\n");
+            sb.append("For Xun, we will practice gentle flowing movements that embody the qualities of wind.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("Slowly raise your arms to the sides as you inhale, then gently bring them down in a circular motion as you exhale, mimicking the flow of wind.\n");
+            sb.append("Repeat this movement several times, focusing on smooth transitions and fluidity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceKan() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String kan : Trigrams) {
+            sb.append("Kan represents Water, danger, depth, and the middle son. It is associated with the north direction and winter season.\n");
+            sb.append("For Kan, we will focus on deep breathing and fluid movements that reflect the qualities of water.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("As you inhale deeply, raise your arms above your head, then slowly lower them to your sides as you exhale, imagining the flow of water.\n");
+            sb.append("Incorporate gentle swaying movements from side to side to mimic the ebb and flow of water.\n");
+            sb.append("Repeat this movement several times, focusing on relaxation and fluidity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceLi() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String li : Trigrams) {
+            sb.append("Li represents Fire, clarity, brightness, and the middle daughter. It is associated with the south direction and summer season.\n");
+            sb.append("For Li, we will practice energetic movements that embody the qualities of fire.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("Raise your arms above your head as you inhale deeply, then bring them down in front of you with energy as you exhale, simulating the flicker of flames.\n");
+            sb.append("Incorporate quick footwork, such as light jumps or steps, to mimic the lively nature of fire.\n");
+            sb.append("Repeat this movement several times, focusing on energy and vitality.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceGen() {
+
+        StringBuilder sb = new StringBuilder();
+        for (String gen : Trigrams) {
+            sb.append("Gen represents Mountain, stillness, stability, and the youngest son. It is associated with the northeast direction and late winter season.\n");
+            sb.append("For Gen, we will focus on grounding and stability through slow, deliberate movements.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("Slowly raise your arms above your head as you inhale, then gently lower them to your sides as you exhale, focusing on maintaining balance and stillness.\n");
+            sb.append("Incorporate slow, controlled shifts in weight from one foot to the other to enhance your sense of stability.\n");
+            sb.append("Repeat this movement several times, focusing on calmness and rootedness.\n");
+            break;
+        }
+        return sb.toString();
+    }
+    private String practiceDui() {
+        
+        StringBuilder sb = new StringBuilder();
+        for (String dui : Trigrams) {
+            sb.append("Dui represents Lake, joy, openness, and the youngest daughter. It is associated with the west direction and autumn season.\n");
+            sb.append("For Dui, we will practice light, joyful movements that embody the qualities of a lake.\n");
+            sb.append("Begin in a standing position with feet shoulder-width apart.\n");
+            sb.append("Raise your arms to the sides as you inhale, then gently bring them down in a circular motion as you exhale, mimicking the gentle ripples of a lake.\n");
+            sb.append("Incorporate light footwork, such as small hops or steps, to enhance the feeling of joy and openness.\n");
+            sb.append("Repeat this movement several times, focusing on lightness and happiness.\n");
+            break;
+        }
+        return sb.toString();
+    }
+}
