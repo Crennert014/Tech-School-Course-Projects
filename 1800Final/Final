@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class QiManuversGUI extends Application {
+public class QiGong extends Application {
     private static final String[] WhatToLearn = {"Stance", "Breathing", "Movement", "Focus", "Meditation"};
     private static final String[] Categories = {"8 Trigram", "Element", "Animal"};
     private static final String[] Trigrams = {"Qian", "Kun", "Zhen", "Xun", "Kan", "Li", "Gen", "Dui"};
@@ -25,7 +25,7 @@ public class QiManuversGUI extends Application {
         Label intro = new Label("This program will help guide you through the learning of Qi Gong.\nIt will gently guide you and build skills in the following areas:");
         ListView<String> skillsList = new ListView<>();
         skillsList.getItems().addAll(WhatToLearn);
-        skillsList.setMaxHeight(100);
+        skillsList.setMaxHeight(120);
 
         Label catLabel = new Label("Choose a Category:");
         ComboBox<String> catCombo = new ComboBox<>();
@@ -79,35 +79,175 @@ public class QiManuversGUI extends Application {
     private String getAnimalInfo(String value) {
         switch (value) {
             case "Tiger":
-                return "The Tiger represents strength, courage, and personal power. It is associated with the wood element and the spring season.";
+                return practiceTiger();
             case "Deer":
-                return "The Deer symbolizes gentleness, grace, and the ability to move through life with ease. It is linked to the earth element and the summer season.";
+                return practiceDeer();
             case "Bear":
-                return "The Bear embodies introspection, strength, and the power of the unconscious. It is associated with the water element and the winter season.";
+                return practiceBear();
             case "Monkey":
-                return "The Monkey represents intelligence, adaptability, and playfulness. It is linked to the metal element and the autumn season.";
+                return practiceMonkey();
             case "Crane":
-                return "The Crane symbolizes longevity, wisdom, and the ability to navigate between worlds. It is associated with the fire element and the summer season.";
+                return practiceCrane();
             default:
                 return "Select an Animal to see its attributes.";
         }
     }
 
+    private String practiceTiger() {
+        StringBuilder sb = new StringBuilder();
+        for (String tiger : Trigrams) {
+            sb.append("The Tiger represents strength, courage, and personal power. It is associated with the wood element and the spring season.\n");
+            sb.append("For Tiger, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a strong, powerful energy flowing from the earth up into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        } 
+        return sb.toString();
+    }
+
+    private String practiceDeer() {
+        StringBuilder sb = new StringBuilder();
+        for (String deer : Trigrams) {
+            sb.append("The Deer represents gentleness, grace, and intuition. It is associated with the wood element and the spring season.\n");
+            sb.append("For Deer, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a soft, gentle energy flowing from the earth up into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceBear() {
+        StringBuilder sb = new StringBuilder();
+        for (String bear : Trigrams) {
+            sb.append("The Bear represents strength, introspection, and healing. It is associated with the earth element and the winter season.\n");
+            sb.append("For Bear, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a strong, protective energy flowing from the earth up into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceMonkey() {
+        StringBuilder sb = new StringBuilder();
+        for (String monkey : Trigrams) {
+            sb.append("The Monkey represents intelligence, adaptability, and playfulness. It is associated with the metal element and the autumn season.\n");
+            sb.append("For Monkey, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a lively, playful energy flowing from the heavens down into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceCrane() {
+        StringBuilder sb = new StringBuilder();
+        for (String crane : Trigrams) {
+            sb.append("The Crane represents elegance, balance, and higher perspective. It is associated with the water element and the winter season.\n");
+            sb.append("For Crane, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a calm, serene energy flowing from the heavens down into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
     private String getElementInfo(String value) {
         switch (value) {
             case "Wood":
-                return "Wood represents growth, vitality, and flexibility. It is associated with the spring season.";
+                return practiceWood();
             case "Fire":
-                return "Fire symbolizes passion, energy, and transformation. It is linked to the summer season.";
+                return practiceFire();
             case "Earth":
-                return "Earth embodies stability, nourishment, and grounding. It is associated with the late summer season.";
+                return practiceEarth();
             case "Metal":
-                return "Metal represents clarity, precision, and structure. It is linked to the autumn season.";
+                return practiceMetal();
             case "Water":
-                return "Water symbolizes flow, adaptability, and intuition. It is associated with the winter season.";
+                return practiceWater();
             default:
                 return "Select an Element to see its attributes.";
         }
+    }
+
+    private String practiceWood() {
+        StringBuilder sb = new StringBuilder();
+        for (String wood : Trigrams) {
+            sb.append("Wood represents growth, vitality, and flexibility. It is associated with the spring season.\n");
+            sb.append("For Wood, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a strong, creative energy flowing from the heavens down into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        } 
+        return sb.toString();
+    }
+
+    private String practiceFire() {
+        StringBuilder sb = new StringBuilder();
+        for (String fire : Trigrams) {
+            sb.append("Fire represents passion, energy, and transformation. It is associated with the summer season.\n");
+            sb.append("For Fire, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a warm, radiant energy filling your body, igniting your inner fire.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceEarth() {
+        StringBuilder sb = new StringBuilder();
+        for (String earth : Trigrams) {
+            sb.append("Earth represents stability, nourishment, and grounding. It is associated with the late summer season.\n");
+            sb.append("For Earth, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a strong, grounding energy flowing from the earth up into your body.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceMetal() {
+        StringBuilder sb = new StringBuilder();
+        for (String metal : Trigrams) {
+            sb.append("Metal represents clarity, precision, and structure. It is associated with the autumn season.\n");
+            sb.append("For Metal, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a cool, clear energy filling your body, sharpening your focus and intent.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
+    }
+
+    private String practiceWater() {
+        StringBuilder sb = new StringBuilder();
+        for (String water : Trigrams) {
+            sb.append("Water represents flow, adaptability, and intuition. It is associated with the winter season.\n");
+            sb.append("For Water, we will begin with a basic stance called 'Wu Ji' or 'Emptiness'.\n");
+            sb.append("Stand with your feet shoulder-width apart, knees slightly bent, and arms relaxed at your sides.\n");
+            sb.append("Close your eyes and take a few deep breaths, inhaling through your nose and exhaling through your mouth.\n");
+            sb.append("As you breathe, visualize a cool, flowing energy filling your body, soothing and calming your mind.\n");
+            sb.append("Focus on cultivating this energy, feeling it strengthen and invigorate you as you breathe in this energy and out with any tension or negativity.\n");
+            break;
+        }
+        return sb.toString();
     }
 
     private String getTrigramInfo(String trigram) {
