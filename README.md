@@ -86,12 +86,12 @@ This repository is organized by chapters and course modules, containing exercise
 ### Final Projects
 
 - **Final/**: Course final projects including comprehensive programming exercises
-- **1800Final/**: QiGong Learning Guide application (JavaFX GUI application)
+- **1800Final/**: Qi Gong Learning Guide application (JavaFX GUI application)
 - **TESD 1800/**: Additional TESD course materials
 
-## 🚀 Featured Project: QiGong Learning Guide
+## 🚀 Featured Project: Qi Gong Learning Guide
 
-The QiGong Learning Guide is a JavaFX application designed to introduce users to Qi Gong practices. It covers:
+The Qi Gong Learning Guide is a JavaFX application designed to introduce users to Qi Gong practices. It covers:
 - Stance techniques
 - Breathing exercises
 - Movement patterns
